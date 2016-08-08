@@ -3,6 +3,8 @@
 from sklearn import datasets
 from sklearn import linear_model
 
+import numpy as np
+
 import matplotlib.pyplot as plt
 
 #Load Train and Test datasets
@@ -10,10 +12,10 @@ import matplotlib.pyplot as plt
 
 boston = datasets.load_boston()
 
-x_train=boston.data[:,5].reshape(-1,1)
-y_train=boston.target.reshape(-1,1)
-x_test=boston.data[:50,5].reshape(-1,1)
-y_test=boston.target[:50].reshape(-1,1)
+x_train=boston.data[:,5,np.newaxis]
+y_train=boston.target
+x_test=boston.data[:50,5,np.newaxis]
+y_test=boston.target[:50]
 
 # Create linear regression object
 linear = linear_model.LinearRegression()
